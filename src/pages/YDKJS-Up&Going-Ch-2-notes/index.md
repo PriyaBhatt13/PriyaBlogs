@@ -13,13 +13,16 @@ non-primitive values like objects, arrays, functions are stored as references bo
 
 arrays are by default coerced to strings by joining all the values with commas in between 
 
->var a = [1,2,3];
->var b = [1,2,3];
->var c = '1,2,3';
-
->a == c //true
->b == c //true
->a == b //false
+```js
+var a = [1,2,3];
+var b = [1,2,3];
+var c = '1,2,3';
+```
+```js
+a == c //true
+b == c //true
+a == b //false
+```
 
 for < comparison, 
 
@@ -27,23 +30,30 @@ if both the values are strings, comparison is made lexicographically,
 
 if one or both is not a string then both values are coerced to numbers
 
->var a = 41;
->var b = "42";
->var c = "43";
-
->a < b  //true
->b < c  //true
+```js
+var a = 41;
+var b = "42";
+var c = "43";
+```
+```js
+a < b  //true
+b < c  //true
+```
 
 
 
 For > comparison,
 
-> var a = 42;
-> var b = "foo";
+```js
+var a = 42;
+var b = "foo";
+```
 
->a < b //false
->a > b //false
->a == b //false
+```js
+a < b //false
+a > b //false
+a == b //false
+```
 
 b gets coerced to NaN, according to specifications NaN is neither greater nor less than any numbers
 
@@ -52,26 +62,28 @@ if a function has a this reference inside it it refers to an object, but which o
 
 this DOES NOT REFER TO function itself
 
+```js
+function foo () {
+    console.log(this.bar);
+}
+```
+```js
+var bar = 'global'
 
->function foo () {
->    console.log(this.bar);
->}
+var obj1 =  {
+    bar: 'obj1',
+    foo: foo()
+}
 
->var bar = 'global'
+var obj2 = {
+    bar: 'obj2'
+}
 
->var obj1 =  {
->    bar: 'obj1',
->    foo: foo()
->}
-
->var obj2 = {
->    bar: 'obj2'
->}
-
->foo() //'global'
+foo() //'global'
 obj1.foo() //'obj1'
 foo.call(obj2) //'obj2'
 new foo() //undefined
+```
 
 foo() ends up setting this to the global object in non-strict mode -- in strict mode, this would be undefined and you'd get an error in accessing the bar property -- so "global" is the value found for this.bar.
 

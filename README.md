@@ -5,7 +5,8 @@ Install this starter (assuming Gatsby is installed) by running from your CLI:
 
 `gatsby new gatsby-blog https://github.com/gatsbyjs/gatsby-starter-blog`
 
-Or [view the live demo here](https://gatsby-starter-blog-demo.netlify.com/).
+
+Syntax theme based on [Sarah Drasner's Night Owl](https://github.com/sdras/night-owl-vscode-theme/) with small tweaks.
 
 ## Running in development
 `gatsby develop`
